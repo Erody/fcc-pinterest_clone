@@ -1,15 +1,18 @@
 import React from 'react'
-import { Card, Button} from 'semantic-ui-react'
+import { Card, Button, Icon} from 'semantic-ui-react'
 import PropTypes from 'prop-types';
 
-const extra = (
-    <div className='ui two buttons'>
-        <Button basic color='green'>Like</Button>
-        <Button basic color='red'>Dislike</Button>
-    </div>
-);
 
-const PictureCard = ({image, header,  description}) => {
+
+const PictureCard = ({image, header,  description, likes, dislikes}) => {
+
+	const extra = (
+        <div className='ui two buttons'>
+            <Button basic color='green'><Icon name="thumbs up"/>{likes}</Button>
+            <Button basic color='red'><Icon name="thumbs down"/>{dislikes}</Button>
+        </div>
+	);
+
     return(
         <Card
             image={image}
