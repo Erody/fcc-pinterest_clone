@@ -5,6 +5,8 @@
   "dependencies": {
     "axios": "^0.16.2",
     "classnames": "^2.2.5",
+    "mongoose": "^4.11.5",
+    "prop-types": "^15.5.10",
     "react": "^15.6.1",
     "react-dom": "^15.6.1",
     "react-redux": "^5.0.5",
@@ -14,6 +16,7 @@
     "redux": "^3.7.2",
     "redux-devtools-extension": "^2.13.2",
     "redux-thunk": "^2.2.0",
+    "semantic-ui-css": "^2.2.11",
     "semantic-ui-react": "^0.71.3"
   },
   "devDependencies": {
@@ -24,5 +27,6 @@
     "build": "react-scripts build",
     "test": "react-scripts test --env=jsdom",
     "eject": "react-scripts eject"
-  }
+  },
+  "proxy": "localhost:8080"
 }
