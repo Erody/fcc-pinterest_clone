@@ -1,12 +1,14 @@
 import React from 'react';
 import { Route, Switch } from 'react-router-dom';
-import Test from './Test';
+import Login from './Login';
+import Signup from './Signup';
 import PictureList from './PictureList'
 
 const Routes = () => {
     return(
         <Switch>
-            <Route path="/test" component={Test} exact/>
+            <Route path="/login" component={Login} exact/>
+            <Route path="/signup" component={Signup} exact/>
             <Route path="/pictures" component={PictureList} exact/>
         </Switch>
     )
