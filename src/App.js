@@ -17,9 +17,8 @@ class App extends Component {
 
 export default App;
 
-// todo - ACTIONS:
-	// todo - create login/logout/signup actions
-	// todo - hook buttons up to their respective actions
+// todo - INTERFACE:
+	// todo - visual feedback for user after login/signup (display error messages on failure, redirect on success with flash message)
 
 // todo - NAVBAR:
 	// todo - if user is logged in show logout button

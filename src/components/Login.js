@@ -1,5 +1,5 @@
 import React from 'react';
-import { Button, Form, Grid, Header, Message, Segment } from 'semantic-ui-react'
+import {  Form, Grid, Header, Message, Segment } from 'semantic-ui-react'
 import { connect } from 'react-redux';
 import { login } from '../actions/auth';
 
@@ -8,6 +8,7 @@ class Login extends React.Component {
 	state = {
 		email: '',
 		password: '',
+		loading: false,
 	};
 
 	componentWillMount = () => {
@@ -26,6 +27,7 @@ class Login extends React.Component {
 
 	handleSubmit = (e) => {
 		e.preventDefault();
+		this.setState({loading: true});
 		const {email, password} = this.state;
 		this.props.login({email, password});
 	};
@@ -63,7 +65,7 @@ class Login extends React.Component {
 								onChange={this.handleChange}
 							/>
 
-							<Button color='teal' fluid size='large'>Login</Button>
+							<Form.Button loading={this.state.loading} color='teal' fluid size='large'>Login</Form.Button>
 						</Segment>
 					</Form>
 					<Message>

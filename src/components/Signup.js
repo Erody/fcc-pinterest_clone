@@ -28,7 +28,8 @@ class Signup extends React.Component {
 	handleSubmit = (e) => {
 		e.preventDefault();
 		const {email, password, passwordVerification} = this.state;
-		this.props.signup({email, password, passwordVerification});
+		this.props.signup({email, password, passwordVerification})
+			.then(this.context.router.history.push('/login'))
 	};
 
 	render() {
@@ -85,6 +86,10 @@ class Signup extends React.Component {
 		)
 	}
 }
+
+Signup.contextTypes = {
+	router: React.PropTypes.object.isRequired
+};
 
 
 

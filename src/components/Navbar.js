@@ -1,5 +1,6 @@
 import React from 'react';
 import { Input, Menu, Button } from 'semantic-ui-react'
+import { connect } from 'react-redux';
 import { NavLink } from 'react-router-dom';
 
 class Navbar extends React.Component {
@@ -12,6 +13,17 @@ class Navbar extends React.Component {
 
 	render() {
 		const { activeItem } = this.state;
+		const { isAuthenticated } = this.props.auth;
+
+		const userLinks = (
+			<Menu.Item name='logout' active={activeItem === 'logout'} onClick={this.handleItemClick} />
+		);
+
+		const guestLinks = (
+			<Menu.Item name='login' active={activeItem === 'login'} onClick={this.handleItemClick}>
+				<NavLink className={'link_black'} to="/Login" exact>Login</NavLink>
+			</Menu.Item>
+		);
 
 		return (
 			<Menu secondary>
@@ -22,14 +34,17 @@ class Navbar extends React.Component {
 					<NavLink className={'link_black'} to="/pictures" exact>Pictures</NavLink>
 				</Menu.Item>
 				<Menu.Menu position='right'>
-					<Menu.Item name='logout' active={activeItem === 'logout'} onClick={this.handleItemClick} />
-					<Menu.Item name='login' active={activeItem === 'login'} onClick={this.handleItemClick}>
-						<NavLink className={'link_black'} to="/Login" exact>Login</NavLink>
-					</Menu.Item>
+					{isAuthenticated ? userLinks : guestLinks}
 				</Menu.Menu>
 			</Menu>
 		)
 	}
 }
 
-export default Navbar;
+function mapStateToProps(state) {
+	return {
+		auth: state.auth
+	}
+}
+
+export default connect(mapStateToProps, null)(Navbar);
