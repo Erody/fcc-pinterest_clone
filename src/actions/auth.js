@@ -24,3 +24,13 @@ export function signup(data) {
 			.then(() => {})
 	}
 }
+
+export function logout() {
+	return dispatch => {
+		return axios.get('/api/auth/logout')
+			.then(() => {
+				console.log('setting current user');
+				dispatch(setCurrentUser({}))
+			})
+	}
+}

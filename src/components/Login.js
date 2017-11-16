@@ -9,6 +9,7 @@ class Login extends React.Component {
 		email: '',
 		password: '',
 		loading: false,
+		error: {}
 	};
 
 	componentWillMount = () => {
@@ -29,7 +30,14 @@ class Login extends React.Component {
 		e.preventDefault();
 		this.setState({loading: true});
 		const {email, password} = this.state;
-		this.props.login({email, password});
+		this.props.login({email, password})
+			.then(() => this.context.router.history.push('/'))
+			.catch(err => this.setState({
+				error: {
+					message: 'Incorrect username or password. Please try again.'
+				},
+				loading: false,
+			}))
 	};
 
 	render() {
@@ -43,7 +51,7 @@ class Login extends React.Component {
 					<Header as='h2' color='teal' textAlign='center'>
 						Log-in to your account
 					</Header>
-					<Form size='large' onSubmit={this.handleSubmit}>
+					<Form size='large' onSubmit={this.handleSubmit} error={!!this.state.error.message}>
 						<Segment stacked>
 							<Form.Input
 								fluid
@@ -66,6 +74,12 @@ class Login extends React.Component {
 							/>
 
 							<Form.Button loading={this.state.loading} color='teal' fluid size='large'>Login</Form.Button>
+
+							<Message
+								error
+								header='Error'
+								content={this.state.error.message}
+							/>
 						</Segment>
 					</Form>
 					<Message>
@@ -77,6 +91,8 @@ class Login extends React.Component {
 	}
 }
 
-
+Login.contextTypes = {
+	router: React.PropTypes.object.isRequired
+};
 
 export default connect(null, {login})(Login);

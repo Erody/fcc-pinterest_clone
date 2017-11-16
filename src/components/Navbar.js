@@ -2,6 +2,8 @@ import React from 'react';
 import { Input, Menu, Button } from 'semantic-ui-react'
 import { connect } from 'react-redux';
 import { NavLink } from 'react-router-dom';
+import { logout } from '../actions/auth';
+
 
 class Navbar extends React.Component {
 
@@ -9,7 +11,12 @@ class Navbar extends React.Component {
 		activeItem: 'home'
 	};
 
-	handleItemClick = (e, { name }) => this.setState({ activeItem: name });
+	handleItemClick = (e, { name }) => {
+		this.setState({ activeItem: name });
+		if(name === 'logout') {
+			this.props.logout();
+		}
+	};
 
 	render() {
 		const { activeItem } = this.state;
@@ -47,4 +54,4 @@ function mapStateToProps(state) {
 	}
 }
 
-export default connect(mapStateToProps, null)(Navbar);
+export default connect(mapStateToProps, {logout})(Navbar);
