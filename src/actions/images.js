@@ -16,3 +16,10 @@ export function getImages(filter) {
 			})
 	}
 }
+
+export function addImage({image, user}) {
+	return dispatch => {
+		return axios.post('/api/images/addImage', {image, user})
+			.then(() => {})
+	}
+}

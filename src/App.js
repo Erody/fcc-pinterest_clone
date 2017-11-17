@@ -17,9 +17,12 @@ class App extends Component {
 
 export default App;
 
-// todo - INTERFACE:
-	// todo - visual feedback for user after login/signup (display error messages on failure, redirect on success with flash message)
+// todo - USER
+	// todo - User can link to images
+		// todo - user's images are shown on that user's profile page
+	// todo - User can unlink images
+	// todo - User can vote on images (that are not his own)
+	// todo - broken links will be replaced by a placeholder image
 
-// todo - NAVBAR:
-	// todo - if user is logged in show logout button
-	// todo - if user is not logged in show login button (login page has link to signup page if user has no account)
+// todo - SECURITY
+	// todo - Protect routes with higher order component
