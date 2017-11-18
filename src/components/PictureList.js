@@ -8,7 +8,11 @@ import { getImages } from '../actions/images';
 class PictureList extends React.Component {
 
 	componentWillMount = () => {
-		this.props.getImages({});
+		if(this.props.imageFilter) {
+			this.props.getImages(this.props.imageFilter);
+		} else {
+			this.props.getImages({});
+		}
 	};
 
 	render() {
@@ -22,7 +26,7 @@ class PictureList extends React.Component {
 
 		return (
 			<div>
-				<Masonry>
+				<Masonry options={{isFitWidth: true, stagger: 30, gutter: 10}} className="masonry">
 					{images}
 				</Masonry>
 			</div>

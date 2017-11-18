@@ -26,3 +26,9 @@ export default App;
 
 // todo - SECURITY
 	// todo - Protect routes with higher order component
+
+// todo - AUTH
+	// todo - Check if user is authenticated server side upon page reload
+
+// todo - FUNCTIONALITY
+	// todo - authenticated users can vote on pictures

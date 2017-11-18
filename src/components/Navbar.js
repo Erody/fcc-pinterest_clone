@@ -22,7 +22,7 @@ class Navbar extends React.Component {
 		const { activeItem } = this.state;
 		const { isAuthenticated } = this.props.auth;
 
-		const userLinks = (
+		const userLinks = this.props.auth.isAuthenticated && (
 			<Menu secondary>
 				<Menu.Item name='home' active={activeItem === 'home'} onClick={this.handleItemClick} >
 					<NavLink className={'link_black'} to="/" exact>Home</NavLink>
@@ -32,6 +32,9 @@ class Navbar extends React.Component {
 				</Menu.Item>
 				<Menu.Item name='addImage' active={activeItem === 'addImage'} onClick={this.handleItemClick}>
 					<NavLink className={'link_black'} to="/addImage" exact>Add Image</NavLink>
+				</Menu.Item>
+				<Menu.Item name='profile' active={activeItem === 'profile'} onClick={this.handleItemClick}>
+					<NavLink className={'link_black'} to={`/user/${this.props.auth.user._id}`} exact>Profile</NavLink>
 				</Menu.Item>
 				<Menu.Menu position='right'>
 					<Menu.Item name='logout' active={activeItem === 'logout'} onClick={this.handleItemClick} />
