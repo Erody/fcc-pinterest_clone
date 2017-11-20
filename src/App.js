@@ -24,9 +24,6 @@ export default App;
 	// todo - User can vote on images (that are not his own)
 	// todo - broken links will be replaced by a placeholder image
 
-// todo - SECURITY
-	// todo - Protect routes with higher order component
-
 // todo - AUTH
 	// todo - Check if user is authenticated server side upon page reload
 

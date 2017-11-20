@@ -1,2 +1,3 @@
 export const SET_IMAGES = 'SET_IMAGES';
 export const SET_CURRENT_USER = 'SET_CURRENT_USER';
+export const UPDATE_IMAGE = 'UPDATE_IMAGE';

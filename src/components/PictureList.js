@@ -20,7 +20,7 @@ class PictureList extends React.Component {
 		const images = this.props.images ?
 			this.props.images.map(image => {
 				return (
-					<PictureCard key={image.url} image={image.url} header={image.header} description={image.description} likes={image.likes} dislikes={image.dislikes}/>
+					<PictureCard key={image._id} id={image._id} image={image.url} header={image.header} description={image.description} likes={image.likes} dislikes={image.dislikes}/>
 				);
 			}) : '';
 
