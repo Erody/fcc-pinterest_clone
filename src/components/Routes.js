@@ -6,6 +6,7 @@ import AddImage from './AddImage';
 import PictureList from './PictureList'
 import Welcome from './Welcome'
 import Profile from './Profile';
+import requireAuth from '../utils/requireAuth';
 
 const Routes = () => {
     return(
@@ -13,9 +14,9 @@ const Routes = () => {
             <Route path="/" component={Welcome} exact/>
             <Route path="/login" component={Login} exact/>
             <Route path="/signup" component={Signup} exact/>
-            <Route path="/user/:id" component={Profile} exact/>
+            <Route path="/user/:id" component={requireAuth(Profile)} exact/>
             <Route path="/pictures" component={PictureList} exact/>
-            <Route patch="/addImage" component={AddImage} exact/>
+            <Route patch="/addImage" component={requireAuth(AddImage)} exact/>
         </Switch>
     )
 };
