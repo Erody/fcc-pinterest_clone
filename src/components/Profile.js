@@ -6,7 +6,7 @@ class Profile extends React.Component {
 	render() {
 		return (
 			<div>
-				<PictureList imageFilter={{owner: this.props.auth.user._id}} />
+				<PictureList imageFilter={{owner: this.props.location.pathname.slice(6)}} />
 			</div>
 		)
 	}

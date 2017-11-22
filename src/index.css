@@ -17,3 +17,7 @@ body {
 .masonry {
   margin: 20px auto;
 }
+
+.deleteButton {
+  margin-top: 10px;
+}

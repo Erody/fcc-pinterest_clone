@@ -14,29 +14,37 @@ class PictureCard extends React.Component {
 
     handleUpvote = (e) => {
         e.preventDefault();
-        this.props.voteImage({id: this.props.id, vote: 'like'})
+        this.props.voteImage({id: this.props.id, vote: 'likes'})
             .then(() => {
                 const index = this.props.images.findIndex(x => x._id === this.props.id);
-                this.setState({likes: this.props.images[index].likes})
+                this.setState({likes: this.props.images[index].likes, dislikes: this.props.images[index].dislikes})
             });
     };
 
     handleDownvote = (e) => {
         e.preventDefault();
-		this.props.voteImage({id: this.props.id, vote: 'dislike'})
+		this.props.voteImage({id: this.props.id, vote: 'dislikes'})
 			.then(() => {
 				const index = this.props.images.findIndex(x => x._id === this.props.id);
-				this.setState({dislikes: this.props.images[index].dislikes})
+				this.setState({likes: this.props.images[index].likes, dislikes: this.props.images[index].dislikes})
 			});
 	};
 
 	render() {
 
 		const extra = (
-            <div className='ui two buttons'>
-                <Button onClick={this.handleUpvote} basic color='green'><Icon name="thumbs up"/>{this.state.likes}</Button>
-                <Button onClick={this.handleDownvote} basic color='red'><Icon name="thumbs down"/>{this.state.dislikes}</Button>
-            </div>
+			<div>
+				<div className='ui two buttons'>
+					<Button onClick={this.handleUpvote} basic color='green'><Icon name="thumbs up"/>{this.state.likes}</Button>
+					<Button onClick={this.handleDownvote} basic color='red'><Icon name="thumbs down"/>{this.state.dislikes}</Button>
+				</div>
+				{this.props.auth.isAuthenticated && this.props.auth.user._id === this.props.owner ?
+					<div className="deleteButton">
+						<Button fluid  onClick={this.delete} basic><Icon name="recycle"/>Delete</Button>
+					</div> : null
+				}
+
+			</div>
 		);
 
 		return(
@@ -59,7 +67,8 @@ PictureCard.propTypes = {
 
 function mapStateToProps(state) {
 	return {
-		images: state.images.imageList
+		images: state.images.imageList,
+		auth: state.auth
 	}
 }
 
